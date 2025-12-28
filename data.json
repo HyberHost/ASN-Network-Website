@@ -1,0 +1,186 @@
+{
+    "datacentres": [
+        {
+            "name": "Continuity House",
+            "code": "CCH",
+            "provider": "UKServers",
+            "location": "Coventry, GB",
+            "type": "Core",
+            "notes": "Main GB datacentre"
+        },
+        {
+            "name": "Kitchener DC",
+            "code": "KDC",
+            "Provider": "Datacity",
+            "location": "Kitchener, CA",
+            "type": "Core",
+            "notes": "Main CA datacentre"
+        },
+        {
+            "name": "Equinix TR2",
+            "code": "TR2",
+            "provider": "Equinix",
+            "location": "Toronto, CA",
+            "type": "PoP",
+            "notes": "Hosts IX Onix"
+        }
+    ],
+    "ixs": [
+        {
+            "name": "Onterio InterNet Exchange (ONIX)",
+            "code": "ONIX",
+            "type": "Physical",
+            "location": "Toronto, CA",
+            "pops": [
+                "Kitchener DC",
+                "Equinix TR2"
+            ],
+            "status": "Disabled",
+            "notes": "Currently Disabled until further notice"
+        }
+    ],
+  "bgp_actions": {
+    "0": {
+      "name": "no-advertise",
+      "description": "Suppress advertisement"
+    },
+    "20": {
+      "name": "prepend-1",
+      "description": "Prepend AS51692 once"
+    },
+    "21": {
+      "name": "prepend-2",
+      "description": "Prepend AS51692 twice"
+    },
+    "22": {
+      "name": "prepend-3",
+      "description": "Prepend AS51692 three times"
+    }
+  },
+    "bgp_target_ids": {
+    "0": {
+      "name": "all",
+      "description": "All external neighbors (transit, IX, and private peers)"
+    },
+    "65000": {
+      "name": "transit",
+      "description": "All transit providers"
+    },
+    "65001": {
+      "name": "ix",
+      "description": "All IX route servers"
+    },
+    "65002": {
+      "name": "peer",
+      "description": "All private peers (PNIs)"
+    }
+  },
+    "bgp_communities": [
+    {
+      "community": "51692:0:0",
+      "action": "no-advertise",
+      "target": "all",
+      "description": "Do not advertise this prefix to any external neighbor"
+    },
+    {
+      "community": "51692:0:65000",
+      "action": "no-advertise",
+      "target": "transit",
+      "description": "Do not advertise this prefix to any transit provider"
+    },
+    {
+      "community": "51692:0:65001",
+      "action": "no-advertise",
+      "target": "ix",
+      "description": "Do not advertise this prefix to any IX route server"
+    },
+    {
+      "community": "51692:0:65002",
+      "action": "no-advertise",
+      "target": "peer",
+      "description": "Do not advertise this prefix to any private peer (PNI)"
+    },
+    {
+      "community": "51692:0:<ASN>",
+      "action": "no-advertise",
+      "target": "asn",
+      "description": "Do not advertise this prefix to the specified ASN (transit, peer, or IX route server)"
+    },
+
+    {
+      "community": "51692:20:0",
+      "action": "prepend-1",
+      "target": "all",
+      "description": "Prepend AS51692 once to all external neighbors"
+    },
+    {
+      "community": "51692:21:0",
+      "action": "prepend-2",
+      "target": "all",
+      "description": "Prepend AS51692 twice to all external neighbors"
+    },
+    {
+      "community": "51692:22:0",
+      "action": "prepend-3",
+      "target": "all",
+      "description": "Prepend AS51692 three times to all external neighbors"
+    },
+
+    {
+      "community": "51692:20:65000",
+      "action": "prepend-1",
+      "target": "transit",
+      "description": "Prepend AS51692 once to all transit providers"
+    },
+    {
+      "community": "51692:21:65000",
+      "action": "prepend-2",
+      "target": "transit",
+      "description": "Prepend AS51692 twice to all transit providers"
+    },
+    {
+      "community": "51692:22:65000",
+      "action": "prepend-3",
+      "target": "transit",
+      "description": "Prepend AS51692 three times to all transit providers"
+    },
+
+    {
+      "community": "51692:20:65001",
+      "action": "prepend-1",
+      "target": "ix",
+      "description": "Prepend AS51692 once to all IX route servers"
+    },
+    {
+      "community": "51692:21:65001",
+      "action": "prepend-2",
+      "target": "ix",
+      "description": "Prepend AS51692 twice to all IX route servers"
+    },
+    {
+      "community": "51692:22:65001",
+      "action": "prepend-3",
+      "target": "ix",
+      "description": "Prepend AS51692 three times to all IX route servers"
+    },
+
+    {
+      "community": "51692:20:<ASN>",
+      "action": "prepend-1",
+      "target": "asn",
+      "description": "Prepend AS51692 once towards the specified ASN"
+    },
+    {
+      "community": "51692:21:<ASN>",
+      "action": "prepend-2",
+      "target": "asn",
+      "description": "Prepend AS51692 twice towards the specified ASN"
+    },
+    {
+      "community": "51692:22:<ASN>",
+      "action": "prepend-3",
+      "target": "asn",
+      "description": "Prepend AS51692 three times towards the specified ASN"
+    }
+    ]
+}
