@@ -182,5 +182,41 @@
       "target": "asn",
       "description": "Prepend AS51692 three times towards the specified ASN"
     }
+    ],
+    "route_servers": [
+      {
+        "location": "Continuity House",
+        "asn": "51692",
+        "full_table_support": true,
+        "servers": [
+          {
+            "hostname": "rs1.cov.as51692.net",
+            "ipv4": "185.242.225.168",
+            "ipv6": "2602:f865:f0:b::2"
+          },
+          {
+            "hostname": "rs2.cov.as51692.net",
+            "ipv4": "",
+            "ipv6": ""
+          }
+        ]
+      },
+      {
+        "location": "Kitchener DC",
+        "asn": "51692",
+        "full_table_support": true,
+        "servers": [
+          {
+            "hostname": "rs1.kit.as51692.net",
+            "ipv4": "",
+            "ipv6": ""
+          },
+          {
+            "hostname": "rs2.kit.as51692.net",
+            "ipv4": "",
+            "ipv6": ""
+          }
+        ]
+      }
     ]
 }
