@@ -22,7 +22,7 @@ $subtitle = $is27498 ? "SacredServers (HyberHost's Canada Network)" : 'HyberHost
             $ogImg = "https://clientarea.hyberhost.com/brand/logo.png";
             $orgName = "SacredServers (HyberHost Canada Network)";
             $orgUrl = "https://as27498.net/";
-            $sameAs = '["https://www.peeringdb.com/asn/51692","https://bgp.tools/as/51692"]';
+            $sameAs = '["https://www.peeringdb.com/asn/27498","https://bgp.tools/as/27498"]';
         } else {
             $desc = "Network information, datacentres, IXs, BGP communities, and peering details for HyberHost (AS51692).";
             $ogTitle = "AS51692 Network Information | HyberHost";
@@ -98,6 +98,12 @@ $subtitle = $is27498 ? "SacredServers (HyberHost's Canada Network)" : 'HyberHost
         }
         </script>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/fav/favicon.svg" />
+        <link rel="shortcut icon" href="/fav/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/fav/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="<?php echo htmlspecialchars($ogSite); ?> | HyberHost" />
+        <link rel="manifest" href="/fav/site.webmanifest" />
 </head>
 <body class="bg-gray-100">
     <header class="bg-gray-900 text-white py-8 text-center">
@@ -129,7 +135,9 @@ $subtitle = $is27498 ? "SacredServers (HyberHost's Canada Network)" : 'HyberHost
                     <li><span class="font-semibold">Traffic:</span> 2-10Gbps, Balanced</li>
                 </ul>
             <?php else: ?>
-                <p>HyberHost (AS51692) operates a primarily UK-based network, with additional presence for in Canada for our north-america services.</p>
+                <p>
+                    HyberHost (AS51692) operates a primarily UK-based network, with additional presence in Canada for our North American services.
+                </p>
                 <ul class="list-disc ml-6 mt-3 space-y-1">
                     <li><span class="font-semibold">ASN:</span> 51692</li>
                     <li><span class="font-semibold">Other ASNs:</span><br> - AS27498 (Canada Network)</li>
@@ -228,7 +236,9 @@ $subtitle = $is27498 ? "SacredServers (HyberHost's Canada Network)" : 'HyberHost
         </section>
         <section id="peering-transit" class="mb-10">
             <h2 class="text-2xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Peering / Transit</h2>
-            <p>Peering with HyberHost (AS51692).</p>
+            <p>
+                Peering with <?php echo $is27498 ? 'SacredServers (AS27498)' : 'HyberHost (AS51692)'; ?>.
+            </p>
             <ul class="list-disc ml-6 mt-3 space-y-1">
                 <li><span class="font-semibold">PeeringDB:</span> <a href="https://www.peeringdb.com/asn/51692" class="text-blue-700 underline" target="_blank">https://www.peeringdb.com/asn/51692</a></li>
                 <li><span class="font-semibold">bgp.tools:</span> <a href="https://bgp.tools/as/51692" class="text-blue-700 underline" target="_blank">https://bgp.tools/as/51692</a></li>
@@ -245,18 +255,15 @@ $subtitle = $is27498 ? "SacredServers (HyberHost's Canada Network)" : 'HyberHost
             </ul>
         </section>
     </main>
-</body>
-</html>
-</main>
-<!-- Google Analytics -->
-<script defer src="https://www.googletagmanager.com/gtag/js?id=G-F7YHDNV8YK"></script>
-<script defer>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.addEventListener('DOMContentLoaded', function() {
-        gtag('js', new Date());
-        gtag('config', 'G-F7YHDNV8YK', { 'anonymize_ip': true });
-    });
-</script>
+    <!-- Google Analytics -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-F7YHDNV8YK"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.addEventListener('DOMContentLoaded', function() {
+            gtag('js', new Date());
+            gtag('config', 'G-F7YHDNV8YK', { 'anonymize_ip': true });
+        });
+    </script>
 </body>
 </html>
