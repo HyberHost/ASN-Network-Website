@@ -1,0 +1,6 @@
+prefix,country,region,city,postal-code
+185.242.225.0/24,GB,GB-ENG,Coventry,CV4 9AP
+2602:f865:10::/44,GB,GB-ENG,Coventry,CV4 9AP
+2602:f865:e1::/48,GB,GB-ENG,Coventry,CV4 9AP
+2602:f865:f0::/48,GB,GB-ENG,Coventry,CV4 9AP
+2602:f865:f1::/48,GB,GB-ENG,Coventry,CV4 9AP
