@@ -210,29 +210,72 @@ $subtitle = $is27498 ? "SacredServers (HyberHost's Canada Network)" : 'HyberHost
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($config['bgp_communities'] as $bgp): ?>
-                        <tr class="even:bg-gray-50">
-                            <td class="px-4 py-2 border-b font-mono"><?php echo htmlspecialchars($bgp['community']); ?></td>
-                            <td class="px-4 py-2 border-b">
-                                <?php
-                                    echo isset($bgp['action']) && isset($config['bgp_actions'][$bgp['action']])
-                                        ? htmlspecialchars($config['bgp_actions'][$bgp['action']]['name'] . ' — ' . $config['bgp_actions'][$bgp['action']]['description'])
-                                        : (isset($bgp['action']) ? htmlspecialchars($bgp['action']) : '');
-                                ?>
-                            </td>
-                            <td class="px-4 py-2 border-b">
-                                <?php
-                                    echo isset($bgp['target']) && isset($config['bgp_target_ids'][$bgp['target']])
-                                        ? htmlspecialchars($config['bgp_target_ids'][$bgp['target']]['name'] . ' — ' . $config['bgp_target_ids'][$bgp['target']]['description'])
-                                        : (isset($bgp['target']) ? htmlspecialchars($bgp['target']) : '');
-                                ?>
-                            </td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars(isset($bgp['description']) ? $bgp['description'] : ''); ?></td>
-                        </tr>
-                        <?php endforeach; ?>
+                        <?php if (!empty($config['bgp_communities']) && is_array($config['bgp_communities'])): ?>
+                            <?php foreach ($config['bgp_communities'] as $bgp): ?>
+                            <tr class="even:bg-gray-50">
+                                <td class="px-4 py-2 border-b font-mono"><?php echo htmlspecialchars($bgp['community']); ?></td>
+                                <td class="px-4 py-2 border-b">
+                                    <?php
+                                        echo isset($bgp['action']) && isset($config['bgp_actions'][$bgp['action']])
+                                            ? htmlspecialchars($config['bgp_actions'][$bgp['action']]['name'] . ' — ' . $config['bgp_actions'][$bgp['action']]['description'])
+                                            : (isset($bgp['action']) ? htmlspecialchars($bgp['action']) : '');
+                                    ?>
+                                </td>
+                                <td class="px-4 py-2 border-b">
+                                    <?php
+                                        echo isset($bgp['target']) && isset($config['bgp_target_ids'][$bgp['target']])
+                                            ? htmlspecialchars($config['bgp_target_ids'][$bgp['target']]['name'] . ' — ' . $config['bgp_target_ids'][$bgp['target']]['description'])
+                                            : (isset($bgp['target']) ? htmlspecialchars($bgp['target']) : '');
+                                    ?>
+                                </td>
+                                <td class="px-4 py-2 border-b"><?php echo htmlspecialchars(isset($bgp['description']) ? $bgp['description'] : ''); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="4" class="px-4 py-2 border-b text-center text-gray-500">No BGP communities available.</td></tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
+        </section>
+        <section id="route-servers" class="mb-10">
+            <h2 class="text-2xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Route Servers</h2>
+            <p class="mb-4 text-gray-700">Route servers are used for downstream customers who wish to announce their own IPs through our network.</p>
+            <?php if (!empty($config['route_servers'])): ?>
+                <div class="grid gap-6">
+                <?php foreach ($config['route_servers'] as $rsGroup): ?>
+                    <div class="border rounded-lg bg-gray-50 p-4">
+                        <div class="flex flex-wrap items-center justify-between mb-2">
+                            <span class="font-semibold text-lg">Location: <?php echo htmlspecialchars($rsGroup['location']); ?></span>
+                            <span class="ml-4 text-sm text-gray-600">ASN: <span class="font-mono text-gray-800"><?php echo htmlspecialchars($rsGroup['asn']); ?></span></span>
+                            <span class="ml-4 text-sm">Full Table Support: <?php echo !empty($rsGroup['full_table_support']) ? '<span title="Yes" class="text-green-600">&#10003;</span>' : '<span title="No" class="text-red-600">&#10007;</span>'; ?></span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-sm">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="px-2 py-1 border-b text-left">Hostname</th>
+                                        <th class="px-2 py-1 border-b text-left">IPv4</th>
+                                        <th class="px-2 py-1 border-b text-left">IPv6</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($rsGroup['servers'] as $server): ?>
+                                    <tr>
+                                        <td class="px-2 py-1 border-b font-mono"><?php echo htmlspecialchars($server['hostname']); ?></td>
+                                        <td class="px-2 py-1 border-b font-mono"><?php echo htmlspecialchars($server['ipv4']); ?></td>
+                                        <td class="px-2 py-1 border-b font-mono"><?php echo htmlspecialchars($server['ipv6']); ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>No route server information available.</p>
+            <?php endif; ?>
         </section>
         <section id="peering-transit" class="mb-10">
             <h2 class="text-2xl font-semibold border-b-2 border-gray-200 pb-2 mb-4">Peering / Transit</h2>
