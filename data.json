@@ -3,6 +3,10 @@
         {
             "name": "Continuity House",
             "code": "CCH",
+            "aliases": {
+              "codes": ["205"],
+              "names": ["205 Coventry"]
+            },
             "provider": "UKServers",
             "location": "Coventry, GB",
             "type": "Core",
@@ -11,7 +15,7 @@
         {
             "name": "Kitchener DC",
             "code": "KDC",
-            "Provider": "Datacity",
+            "provider": "Datacity",
             "location": "Kitchener, CA",
             "type": "Core",
             "notes": "Main CA datacentre"
@@ -22,7 +26,23 @@
             "provider": "Equinix",
             "location": "Toronto, CA",
             "type": "PoP",
-            "notes": "Hosts IX Onix"
+            "notes": "Point of Presence in Toronto"
+        },
+        {
+            "name": "Telehouse London",
+            "code": "THN2",
+            "provider": "Telehouse",
+            "location": "London, GB",
+            "type": "PoP",
+            "notes": "Point of Presence in London"
+        },
+        {
+            "name": "Equinix Manchester",
+            "code": "MA1",
+            "provider": "Equinix",
+            "location": "Manchester, GB",
+            "type": "PoP",
+            "notes": "Point of Presence in Manchester"
         }
     ],
     "ixs": [
@@ -196,24 +216,24 @@
           },
           {
             "hostname": "rs2.cov.as51692.net",
-            "ipv4": "",
-            "ipv6": ""
+            "ipv4": "185.242.225.149",
+            "ipv6": "2602:f865:f0:b::3"
           }
         ]
       },
       {
         "location": "Kitchener DC",
         "asn": "51692",
-        "full_table_support": true,
+        "full_table_support": false,
         "servers": [
           {
             "hostname": "rs1.kit.as51692.net",
-            "ipv4": "",
+            "ipv4": "23.128.44.134",
             "ipv6": ""
           },
           {
             "hostname": "rs2.kit.as51692.net",
-            "ipv4": "",
+            "ipv4": "23.128.44.135",
             "ipv6": ""
           }
         ]
